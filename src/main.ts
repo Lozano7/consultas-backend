@@ -28,6 +28,6 @@ async function bootstrap() {
     }),
   );
 
-  await app.listen(configService.get('PORT'));
+  await app.listen(process.env.PORT || configService.get('PORT') || 3000);
 }
 bootstrap();
