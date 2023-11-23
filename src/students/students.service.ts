@@ -17,6 +17,7 @@ export class StudentsService {
   async processExcel(
     filePath: string,
   ): Promise<{ message: string; data: any } | { message: string }> {
+    await this.studentsModel.deleteMany({});
     const workbook = xlsx.readFile(filePath);
     const sheetName = workbook.SheetNames[0];
     const sheet = workbook.Sheets[sheetName];
